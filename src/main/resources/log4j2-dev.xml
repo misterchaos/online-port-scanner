@@ -16,8 +16,7 @@
         <Console name="console" target="SYSTEM_OUT">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
-            <!-- 输出日志的格式 -->
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <!-- 输出日志的格式 --><PatternLayout pattern="${LOG_PATTERN}"/>
         </Console>
         <RollingRandomAccessFile name="infoFile" fileName="${filePath}/runLog.log" immediateFlush="true"
                                  filePattern="${fileGz}/$${date:yyyy-MM}/%d{yyyy-MM-dd}-%i.log.gz">

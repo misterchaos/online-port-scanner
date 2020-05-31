@@ -18,9 +18,9 @@ import java.util.concurrent.CountDownLatch;
 @Slf4j
 public class PortScanWorker implements Runnable {
 
-    private PortInfo portInfo;
+    private final PortInfo portInfo;
 
-    private CountDownLatch portCountDownLatch;
+    private final CountDownLatch portCountDownLatch;
 
     public PortScanWorker(PortInfo portInfo, CountDownLatch portCountDownLatch) {
         this.portInfo = portInfo;
@@ -29,7 +29,7 @@ public class PortScanWorker implements Runnable {
 
     @Override
     public void run() {
-        log.info("正在开始扫描主机{}的{}端口",portInfo.getIp(),portInfo.getPort());
+        log.info("正在开始扫描主机{}的{}端口", portInfo.getIp(), portInfo.getPort());
 
         TimeInterval timer = DateUtil.timer();
 
@@ -42,7 +42,7 @@ public class PortScanWorker implements Runnable {
         }
         InetSocketAddress inetSocketAddress = new InetSocketAddress(ip, portInfo.getPort());
 
-        log.info("解析ip耗时{}秒",timer.intervalSecond());
+        log.info("解析ip耗时{}秒", timer.intervalSecond());
         timer.intervalRestart();
 
         //扫描TCP端口
@@ -54,7 +54,7 @@ public class PortScanWorker implements Runnable {
             log.info("检测到{}的TCP {}端口不开放", inetSocketAddress.getAddress(), inetSocketAddress.getPort());
         }
 
-        log.info("扫描TCP耗时{}秒",timer.intervalSecond());
+        log.info("扫描TCP耗时{}秒", timer.intervalSecond());
         timer.intervalRestart();
 
         //扫描UDP端口
@@ -80,15 +80,15 @@ public class PortScanWorker implements Runnable {
             log.warn("发送UDP数据包发生异常");
         }
 
-        log.info("扫描UDP耗时{}秒",timer.intervalSecond());
+        log.info("扫描UDP耗时{}秒", timer.intervalSecond());
 
         //TODO 设置端口服务名称
         complete();
 
     }
 
-    private void complete(){
-        log.info("{}:{} 扫描完成!",portInfo.getIp(),portInfo.getPort());
+    private void complete() {
+        log.info("{}:{} 扫描完成!", portInfo.getIp(), portInfo.getPort());
         //计数器
         portCountDownLatch.countDown();
     }

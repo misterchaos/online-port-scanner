@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
@@ -92,6 +94,9 @@ public class ScanMaster implements Runnable {
 
     @Override
     public void run() {
+
+        List<HostInfo> hostInfoList = new LinkedList<>();
+
         //扫描主机
         portCountDownLatch = ThreadUtil.newCountDownLatch(scanTask.getCountNumber());
         for (BigInteger i = startIp; i.compareTo(endIp) <= 0; i = i.add(BigInteger.ONE)) {
@@ -99,9 +104,11 @@ public class ScanMaster implements Runnable {
             hostInfo.setIp(IpUtil.bigIntToString(i));
             ScanExecutor.execute(new HostScanWorker(hostInfo, portCountDownLatch,
                     scanTask.getMinPort(), scanTask.getMaxPort()));
+            hostInfoList.add(hostInfo);
         }
 
         //加入集合
+        scanTask.setResults(hostInfoList);
         COUNT_DOWN_LATCH_MAP.put(scanTask.getTaskId(), portCountDownLatch);
 
         //等待执行完成

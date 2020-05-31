@@ -2,18 +2,14 @@ package cn.hellochaos.portscanner.task;
 
 import cn.hellochaos.portscanner.entity.HostInfo;
 import cn.hellochaos.portscanner.entity.PortInfo;
-import cn.hellochaos.portscanner.entity.ScanTask;
 import cn.hellochaos.portscanner.exception.bizException.BizException;
 import cn.hutool.core.net.NetUtil;
-import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author <a href="mailto:kobe524348@gmail.com">黄钰朝</a>

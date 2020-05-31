@@ -26,7 +26,7 @@ public class PortScanServiceImpl implements PortScanService {
     @Override
     public String submitScanTask(ScanTask scanTask) {
         //初始化任务
-        scanTask.setTaskId(IdUtil.randomUUID().replace("-",""));
+        scanTask.setTaskId(IdUtil.randomUUID().replace("-", ""));
         ThreadUtil.execute(new ScanMaster(scanTask));
         return scanTask.getTaskId();
     }

@@ -19,7 +19,7 @@ public class IpUtil {
      */
     public static final String HOST_REG = ".*[a-zA-Z]+.*";
 
-    private IpUtil(){
+    private IpUtil() {
 
     }
 
@@ -27,12 +27,11 @@ public class IpUtil {
     /**
      * 将字符串形式的ip地址转换为BigInteger
      *
-     * @param ipInString
-     *            字符串形式的ip地址
+     * @param ipInString 字符串形式的ip地址
      * @return 整数形式的ip地址
      */
     public static BigInteger stringToBigInt(String ipInString) {
-        if(ipInString.matches(HOST_REG)){
+        if (ipInString.matches(HOST_REG)) {
             ipInString = NetUtil.getIpByHost(ipInString);
         }
         ipInString = ipInString.replace(" ", "");
@@ -47,8 +46,7 @@ public class IpUtil {
     /**
      * 将整数形式的ip地址转换为字符串形式
      *
-     * @param ipInBigInt
-     *            整数形式的ip地址
+     * @param ipInBigInt 整数形式的ip地址
      * @return 字符串形式的ip地址
      */
     public static String bigIntToString(BigInteger ipInBigInt) {
@@ -76,7 +74,7 @@ public class IpUtil {
         boolean comFlag = false;// ipv4混合模式标记
         if (ipv6.startsWith(":"))// 去掉开头的冒号
             ipv6 = ipv6.substring(1);
-        String groups[] = ipv6.split(":");
+        String[] groups = ipv6.split(":");
         for (int ig = groups.length - 1; ig > -1; ig--) {// 反向扫描
             if (groups[ig].contains(".")) {
                 // 出现ipv4混合模式

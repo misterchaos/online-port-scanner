@@ -3,6 +3,7 @@ package cn.hellochaos.portscanner.entity;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author <a href="mailto:kobe524348@gmail.com">黄钰朝</a>
@@ -44,6 +45,12 @@ public class ScanTask {
      * 结束时间
      */
     private LocalDateTime endTime;
+
+    /**
+     * 结果
+     */
+    private List<HostInfo> results;
+
     /**
      * 任务状态
      */
@@ -59,7 +66,7 @@ public class ScanTask {
      */
     private String runTime;
 
-    public static final String QUEUING ="queuing";
+    public static final String QUEUING = "queuing";
     public static final String SUCCESS = "success";
     public static final String FAIL = "fail";
     public static final String RUNNING = "running";

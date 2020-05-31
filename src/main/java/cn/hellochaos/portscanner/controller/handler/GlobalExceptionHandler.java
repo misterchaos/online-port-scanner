@@ -37,13 +37,11 @@ public class GlobalExceptionHandler implements HandlerExceptionResolver {
     }
 
 
-
     @ExceptionHandler(NullPointerException.class)
     public ResultBean<?> nullPointerException(NullPointerException e) {
         e.printStackTrace();
         return new ResultBean<>(new BizException("请求中缺少了必要的参数"));
     }
-
 
 
     @ExceptionHandler(
