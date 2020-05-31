@@ -24,8 +24,7 @@ public class ScanController {
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResultBean<?> insert(@RequestBody ScanTask scanTask) {
-        portScanService.submitScanTask(scanTask);
-        return new ResultBean<>();
+        return new ResultBean<>(portScanService.submitScanTask(scanTask));
     }
 
 

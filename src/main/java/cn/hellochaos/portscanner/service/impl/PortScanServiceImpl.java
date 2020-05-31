@@ -2,8 +2,9 @@ package cn.hellochaos.portscanner.service.impl;
 
 import cn.hellochaos.portscanner.entity.ScanTask;
 import cn.hellochaos.portscanner.service.PortScanService;
-import cn.hellochaos.portscanner.task.PortScanner;
+import cn.hellochaos.portscanner.task.ScanMaster;
 import cn.hutool.core.thread.ThreadUtil;
+import cn.hutool.core.util.IdUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,11 @@ public class PortScanServiceImpl implements PortScanService {
      * @param scanTask 扫描任务
      */
     @Override
-    public void submitScanTask(ScanTask scanTask) {
-        ThreadUtil.execute(new PortScanner(scanTask));
+    public String submitScanTask(ScanTask scanTask) {
+        //初始化任务
+        scanTask.setTaskId(IdUtil.randomUUID().replace("-",""));
+        ThreadUtil.execute(new ScanMaster(scanTask));
+        return scanTask.getTaskId();
     }
 
     /**
@@ -35,6 +39,6 @@ public class PortScanServiceImpl implements PortScanService {
      */
     @Override
     public ScanTask getScanTask(String taskId) {
-        return PortScanner.getScanTask(taskId);
+        return ScanMaster.getScanTask(taskId);
     }
 }

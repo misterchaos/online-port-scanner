@@ -13,8 +13,9 @@ public interface PortScanService {
      * 提交扫描任务
      *
      * @param scanTask 扫描任务
+     * @return 返回任务id
      */
-    void submitScanTask(ScanTask scanTask);
+    String submitScanTask(ScanTask scanTask);
 
     /**
      * 获取扫描任务

@@ -1,0 +1,13 @@
+logging:
+  config: classpath:log4j2-dev.xml
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+server:
+  port: 8080
+  servlet:
+    session:
+      cookie:
+        max-age: -1

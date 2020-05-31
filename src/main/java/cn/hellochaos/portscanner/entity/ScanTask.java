@@ -3,7 +3,6 @@ package cn.hellochaos.portscanner.entity;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author <a href="mailto:kobe524348@gmail.com">黄钰朝</a>
@@ -12,23 +11,31 @@ import java.util.List;
  */
 @Data
 public class ScanTask {
-
-    /**
-     * ip范围
-     */
-    private String ip;
-    /**
-     * 端口范围
-     */
-    private String port;
     /**
      * 任务id
      */
     private String taskId;
+
     /**
-     * 扫描结果
+     * 起始IP
      */
-    private List<PortInfo> results;
+    private String startIp;
+
+    /**
+     * 终止IP
+     */
+    private String endIp;
+
+    /**
+     * 最小端口
+     */
+    private int minPort = PortInfo.MIN_PORT;
+
+    /**
+     * 最大端口
+     */
+    private int maxPort = PortInfo.MAX_PORT;
+
     /**
      * 启动时间
      */
@@ -40,10 +47,22 @@ public class ScanTask {
     /**
      * 任务状态
      */
-    private String status;
+    private String status = ScanTask.QUEUING;
 
+    /**
+     * 总共扫描的端口个数
+     */
+    private int countNumber;
+
+    /**
+     * 执行耗时
+     */
+    private String runTime;
+
+    public static final String QUEUING ="queuing";
     public static final String SUCCESS = "success";
     public static final String FAIL = "fail";
     public static final String RUNNING = "running";
+    public static final String OVERTIME = "overtime";
 
 }

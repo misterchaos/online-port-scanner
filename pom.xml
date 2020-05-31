@@ -29,11 +29,7 @@
             <artifactId>hutool-all</artifactId>
             <version>5.3.2</version>
         </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.3.1.tmp</version>
-        </dependency>
+
         <!-- csv文件读取类 -->
         <dependency>
             <groupId>net.sourceforge.javacsv</groupId>
@@ -100,29 +96,9 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-        <!-- sql -->
-        <!-- mysql连接 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-            <version>5.1.47</version>
-        </dependency>
-
-        <!-- shardingjdbc -->
-        <dependency>
-            <groupId>io.shardingjdbc</groupId>
-            <artifactId>sharding-jdbc-core</artifactId>
-            <version>2.0.3</version>
-        </dependency>
 
 
-        <!-- druid连接池 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.21</version>
-        </dependency>
+
         <dependency>
             <groupId>com.deepoove</groupId>
             <artifactId>poi-tl</artifactId>
@@ -188,7 +164,6 @@
             <artifactId>commons-beanutils-core</artifactId>
             <version>1.8.0</version>
         </dependency>
-
 
     </dependencies>
 
