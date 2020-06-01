@@ -29,6 +29,12 @@ public class PortScanWorker implements Runnable {
 
     @Override
     public void run() {
+        scanPort(portInfo);
+        //TODO 设置端口服务名称
+        complete();
+    }
+
+    public static void scanPort(PortInfo portInfo) {
         log.info("正在开始扫描主机{}的{}端口", portInfo.getIp(), portInfo.getPort());
 
         TimeInterval timer = DateUtil.timer();
@@ -49,7 +55,7 @@ public class PortScanWorker implements Runnable {
         try {
             Socket socket = new Socket(inetSocketAddress.getAddress(), inetSocketAddress.getPort());
             portInfo.setProtocol(PortInfo.TCP);
-            portInfo.setOpen(true);
+            portInfo.setStatus(PortInfo.OPEN);
         } catch (IOException e) {
             log.info("检测到{}的TCP {}端口不开放", inetSocketAddress.getAddress(), inetSocketAddress.getPort());
         }
@@ -67,7 +73,7 @@ public class PortScanWorker implements Runnable {
             datagramSocket.receive(new DatagramPacket(new byte[0], 0));
 
             //如果收到数据报则认为UDP端口打开
-            if (portInfo.isOpen()) {
+            if (PortInfo.OPEN.equals(portInfo.getStatus())) {
                 portInfo.setProtocol(PortInfo.TCP_AND_UDP);
             } else {
                 portInfo.setProtocol(PortInfo.UDP);
@@ -81,10 +87,6 @@ public class PortScanWorker implements Runnable {
         }
 
         log.info("扫描UDP耗时{}秒", timer.intervalSecond());
-
-        //TODO 设置端口服务名称
-        complete();
-
     }
 
     private void complete() {

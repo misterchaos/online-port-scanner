@@ -24,16 +24,16 @@ public class PortInfo {
     /**
      * 端口类型
      */
-    private String protocol;
+    private String protocol = NONE;
     /**
      * 服务名称
      */
-    private String service;
+    private String service = UNKNOWN;
 
     /**
      * 是否开放
      */
-    private boolean isOpen;
+    private String status = CLOSE;
 
     /**
      * 最小端口
@@ -46,4 +46,8 @@ public class PortInfo {
     public static final String TCP = "TCP";
     public static final String UDP = "UDP";
     public static final String TCP_AND_UDP = "TCP,UDP";
+    public static final String OPEN = "开启";
+    public static final String CLOSE = "关闭";
+    public static final String UNKNOWN = "未知";
+    public static final String NONE = "无";
 }

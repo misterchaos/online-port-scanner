@@ -1,5 +1,6 @@
 package cn.hellochaos.portscanner.controller;
 
+import cn.hellochaos.portscanner.entity.PortInfo;
 import cn.hellochaos.portscanner.entity.ScanTask;
 import cn.hellochaos.portscanner.entity.dto.ResultBean;
 import cn.hellochaos.portscanner.service.PortScanService;
@@ -29,9 +30,18 @@ public class ScanController {
 
 
     /**
+     * 新增
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/simple")
+    public ResultBean<?> insertSimple(@RequestBody PortInfo portInfo) {
+        return new ResultBean<>(portScanService.submitSimpleScanTask(portInfo));
+    }
+
+
+    /**
      * 根据id查询
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/task/{id}")
     public ResultBean<?> getById(@PathVariable("id") String id) {
         return new ResultBean<>(portScanService.getScanTask(id));
     }

@@ -1,5 +1,6 @@
 package cn.hellochaos.portscanner.service;
 
+import cn.hellochaos.portscanner.entity.PortInfo;
 import cn.hellochaos.portscanner.entity.ScanTask;
 
 /**
@@ -25,4 +26,10 @@ public interface PortScanService {
      */
     ScanTask getScanTask(String taskId);
 
+    /**
+     * 快速扫描任务
+     * @param portInfo 任务
+     * @return 结果
+     */
+    PortInfo submitSimpleScanTask(PortInfo portInfo);
 }
