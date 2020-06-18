@@ -36,7 +36,6 @@ public class PortScanWorker implements Runnable {
   @Override
   public void run() {
     scanPort(portInfo);
-    // TODO 设置端口服务名称
     complete();
   }
 
