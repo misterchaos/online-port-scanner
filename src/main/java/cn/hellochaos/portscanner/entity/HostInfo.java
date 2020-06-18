@@ -12,23 +12,15 @@ import java.util.List;
 @Data
 public class HostInfo {
 
-    /**
-     * ip
-     */
-    private String ip;
+  /** ip */
+  private String ip;
 
-    /**
-     * 域名
-     */
-    private String host;
+  /** 域名 */
+  private String host;
 
-    /**
-     * 端口集合
-     */
-    private List<PortInfo> portList;
+  /** 端口集合 */
+  private List<PortInfo> portList;
 
-    /**
-     * 最小地址和最大地址的分隔符
-     */
-    public static final String SEPARATOR = "-";
+  /** 最小地址和最大地址的分隔符 */
+  public static final String SEPARATOR = "-";
 }

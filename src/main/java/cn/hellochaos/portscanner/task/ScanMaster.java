@@ -73,8 +73,6 @@ public class ScanMaster implements Runnable {
     return scanTask;
   }
 
-
-
   public ScanMaster(ScanTask scanTask) {
     try {
 

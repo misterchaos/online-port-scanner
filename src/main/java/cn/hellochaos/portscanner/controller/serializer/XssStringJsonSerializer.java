@@ -12,19 +12,19 @@ import java.io.IOException;
  * @description json序列化
  * @date 2020-05-22 22:47
  */
-
 public class XssStringJsonSerializer extends JsonSerializer<String> {
-    @Override
-    public Class<String> handledType() {
-        return String.class;
-    }
+  @Override
+  public Class<String> handledType() {
+    return String.class;
+  }
 
-    @Override
-    public void serialize(String value, JsonGenerator jsonGenerator,
-                          SerializerProvider serializerProvider) throws IOException {
-        if (value != null) {
-            String encodedValue = StringEscapeUtils.escapeHtml4(value);
-            jsonGenerator.writeString(encodedValue);
-        }
+  @Override
+  public void serialize(
+      String value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+      throws IOException {
+    if (value != null) {
+      String encodedValue = StringEscapeUtils.escapeHtml4(value);
+      jsonGenerator.writeString(encodedValue);
     }
+  }
 }

@@ -8,10 +8,9 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class PortscannerApplication {
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext applicationContext =
-                SpringApplication.run(PortscannerApplication.class, args);
-        BeanUtils.applicationContext = applicationContext;
-    }
-
+  public static void main(String[] args) {
+    ConfigurableApplicationContext applicationContext =
+        SpringApplication.run(PortscannerApplication.class, args);
+    BeanUtils.applicationContext = applicationContext;
+  }
 }

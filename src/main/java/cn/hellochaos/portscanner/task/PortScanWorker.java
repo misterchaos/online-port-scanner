@@ -2,15 +2,12 @@ package cn.hellochaos.portscanner.task;
 
 import cn.hellochaos.portscanner.entity.Port;
 import cn.hellochaos.portscanner.entity.PortInfo;
-import cn.hellochaos.portscanner.exception.bizException.BizException;
 import cn.hellochaos.portscanner.mapper.PortMapper;
 import cn.hellochaos.portscanner.util.BeanUtils;
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.TimeInterval;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.net.*;

@@ -13,24 +13,20 @@ import java.io.IOException;
  */
 public class ParamsFilter implements Filter {
 
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+  @Override
+  public void init(FilterConfig filterConfig) throws ServletException {}
 
-    }
+  @Override
+  public void doFilter(
+      ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+      throws ServletException, IOException {
 
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws ServletException, IOException {
+    HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
 
-        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
+    ParamsRequestWrapper requestWrapper = new ParamsRequestWrapper(httpRequest);
+    filterChain.doFilter(requestWrapper, servletResponse);
+  }
 
-        ParamsRequestWrapper requestWrapper = new ParamsRequestWrapper(httpRequest);
-        filterChain.doFilter(requestWrapper, servletResponse);
-
-    }
-
-    @Override
-    public void destroy() {
-
-    }
-
+  @Override
+  public void destroy() {}
 }

@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -66,19 +65,6 @@ public class HostScanWorker implements Runnable {
       }
     } catch (IOException e) {
       e.printStackTrace();
-    }
-
-    // 主机不可达时无须检测
-    if (!reachable) {
-      for (int i = minPort; i <= maxPort; i++) {
-        PortInfo portInfo = new PortInfo();
-        portInfo.setIp(hostInfo.getIp());
-        portInfo.setPort(i);
-        portInfo.setComplete(true);
-        hostCountDownLatch.countDown();
-        portInfoList.add(portInfo);
-      }
-      return;
     }
 
     // 启动端口扫描

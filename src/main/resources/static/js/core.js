@@ -144,7 +144,7 @@ function task() {
                     var task = response.data[i];
                     var tbody = '    <tbody>' +
                         '            <tr>\n' +
-                        '                <td>' + (i + 1 )+ '</td>\n' +
+                        '                <td>' + (i + 1) + '</td>\n' +
                         '                <td>' + task.startIp + '</td>\n' +
                         '                <td>' + task.endIp + '</td>\n' +
                         '                <td>' + task.minPort + '</td>\n' +
@@ -219,7 +219,7 @@ function result(id) {
                 if (task.status === 'success') {
                     window.clearInterval(timer);
                     $("#progress").attr("style", "visibility:hidden")
-                }else {
+                } else {
                     $("#progress").attr("style", "visibility:visible")
                 }
 
@@ -263,7 +263,7 @@ function result(id) {
                                     '            </tr>\n' +
                                     '            </tbody>  '
                                 openTable += portTbody;
-                            }else {
+                            } else {
                                 portTbody = '    <tbody>' +
                                     '            <tr>\n' +
                                     '                <td>' + port.ip + '</td>\n' +

@@ -17,7 +17,11 @@
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-88818678-1');
@@ -74,7 +78,7 @@
 
 <div class="theme"></div>
 <script>
-    $(function(){
+    $(function () {
         $(".theme").load("theme.html");
         $(".header").load("header.html");
     });

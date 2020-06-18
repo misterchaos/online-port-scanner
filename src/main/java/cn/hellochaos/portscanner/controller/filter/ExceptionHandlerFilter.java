@@ -19,28 +19,29 @@ import java.io.IOException;
  */
 public class ExceptionHandlerFilter extends OncePerRequestFilter {
 
-    @Override
-    public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        try {
-            filterChain.doFilter(request, response);
-        } catch (Throwable e) {
-            // custom error response class used across my project
-            responseException(e, response, new ResultBean<>(new BizException(e.getMessage())));
-        }
+  @Override
+  public void doFilterInternal(
+      HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+      throws ServletException, IOException {
+    try {
+      filterChain.doFilter(request, response);
+    } catch (Throwable e) {
+      // custom error response class used across my project
+      responseException(e, response, new ResultBean<>(new BizException(e.getMessage())));
     }
+  }
 
-    private void responseException(Throwable e, HttpServletResponse response, ResultBean<?> resultBean) {
-        e.printStackTrace();
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            response.setCharacterEncoding("utf-8");
-            response.setContentType("application/json;charset=utf-8");
-            mapper.writeValue(response.getOutputStream(), resultBean);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+  private void responseException(
+      Throwable e, HttpServletResponse response, ResultBean<?> resultBean) {
+    e.printStackTrace();
+    ObjectMapper mapper = new ObjectMapper();
+    try {
+      response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+      response.setCharacterEncoding("utf-8");
+      response.setContentType("application/json;charset=utf-8");
+      mapper.writeValue(response.getOutputStream(), resultBean);
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
-
-
+  }
 }

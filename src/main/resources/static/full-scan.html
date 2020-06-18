@@ -19,7 +19,11 @@
     <link rel="stylesheet" href="./css/core.css">
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-88818678-1');
@@ -97,17 +101,17 @@
         <label class="mdui-textfield-label">终止端口</label>
         <textarea class="mdui-textfield-input" id="endPort"></textarea>
     </div>
-    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent scan-button" onclick="full_scan()">开始扫描</button>
+    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent scan-button" onclick="full_scan()">
+        开始扫描
+    </button>
 
 
 </div>
 
 
-
-
 <div class="theme"></div>
 <script>
-    $(function(){
+    $(function () {
         $(".theme").load("theme.html");
         $(".header").load("header.html");
     });

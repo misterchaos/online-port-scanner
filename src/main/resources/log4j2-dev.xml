@@ -9,23 +9,27 @@
         <Property name="filePath">/www/wwwlogs/post-scanner</Property>
         <Property name="fileGz">/www/wwwlogs/post-scanner/web_gz</Property>
         <Property name="PID">????</Property>
-        <Property name="LOG_PATTERN">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{[%5p]} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx</Property>
+        <Property name="LOG_PATTERN">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{[%5p]} %clr{${sys:PID}}{magenta}
+            %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx
+        </Property>
     </properties>
     <Appenders>
         <!-- 输出控制台日志的配置 -->
         <Console name="console" target="SYSTEM_OUT">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
-            <!-- 输出日志的格式 --><PatternLayout pattern="${LOG_PATTERN}"/>
+            <!-- 输出日志的格式 -->
+            <PatternLayout pattern="${LOG_PATTERN}"/>
         </Console>
         <RollingRandomAccessFile name="infoFile" fileName="${filePath}/runLog.log" immediateFlush="true"
                                  filePattern="${fileGz}/$${date:yyyy-MM}/%d{yyyy-MM-dd}-%i.log.gz">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%5p] ${sys:PID} --- [%15.15t] {%-40.40c{1.}} : %m%n%xwEx"/>
+            <PatternLayout
+                    pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%5p] ${sys:PID} --- [%15.15t] {%-40.40c{1.}} : %m%n%xwEx"/>
 
             <!-- 打印出info级别以上 ERROR级别以下的信息-->
             <Filters>
                 <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="info"  onMatch="ACCEPT" onMismatch="DENY"/>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             </Filters>
             <Policies>
                 <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
@@ -38,7 +42,8 @@
         <!-- 存储所有error信息 -->
         <RollingRandomAccessFile name="errorFile" fileName="${filePath}/errorLog.log" immediateFlush="true"
                                  filePattern="${fileGz}/$${date:yyyy-MM}/%d{yyyy-MM-dd}-%i.log.gz">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%5p] ${sys:PID} --- [%15.15t] {%-40.40c{1.}} : %m%n%xwEx"/>
+            <PatternLayout
+                    pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%5p] ${sys:PID} --- [%15.15t] {%-40.40c{1.}} : %m%n%xwEx"/>
 
             <Filters>
                 <!-- 记录warn级别以上信息 -->
