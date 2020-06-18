@@ -15,9 +15,15 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-88818678-1"></script>
     <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="./js/core.js"></script>
+    <link rel="stylesheet" href="./css/core.css">
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-88818678-1');
@@ -41,7 +47,6 @@
                 <a href="./index.html" class="mdui-list-item mdui-ripple ">快速扫描</a>
                 <a href="./full-scan.html" class="mdui-list-item mdui-ripple ">高级扫描</a>
                 <a href="./task.html" class="mdui-list-item mdui-ripple ">任务列表</a>
-                <a href="./result.html" class="mdui-list-item mdui-ripple mdui-list-item-active">扫描结果</a>
             </div>
         </div>
 
@@ -67,19 +72,53 @@
 <div class="mdui-container doc-container doc-no-cover">
     <h1 class="doc-title mdui-text-color-theme">扫描结果</h1>
     <div class="doc-intro mdui-typo">
-        <p>我们提供了多种方式来获取 MDUI，且支持 CommonJS、AMD 模块规范。</p>
+        <p>在[高级扫描]中使用端口扫描器对IP地址段和端口段进行扫描的结果</p>
+    </div>
+
+    <div class="mdui-progress" id="progress" style="visibility:hidden">
+        <div class="mdui-progress-indeterminate"></div>
+    </div>
+
+    <h2 class="doc-title mdui-text-color-theme">任务详情</h2>
+    <div class="mdui-table-fluid">
+        <table id="taskTable" class="mdui-table mdui-table-hoverable">
+        </table>
+    </div>
+    <h2 class="doc-title mdui-text-color-theme">开放端口列表</h2>
+    <div class="mdui-table-fluid">
+        <table id="resultTable-open" class="mdui-table mdui-table-hoverable">
+        </table>
+    </div>
+
+    <h2 class="doc-title mdui-text-color-theme">关闭端口列表</h2>
+    <div class="mdui-table-fluid">
+        <table id="resultTable-close" class="mdui-table mdui-table-hoverable">
+        </table>
     </div>
 </div>
 
 
-
-
 <div class="theme"></div>
 <script>
-    $(function(){
+    $(function () {
         $(".theme").load("theme.html");
         $(".header").load("header.html");
     });
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    var id = getUrlParam('id');
+
+    var timer = window.setInterval(function () {
+        result(id)
+    }, 3000)
+
+
 </script>
 
 <script src="//www.mdui.org/docs/assets/smooth-scroll-11.1.0/smooth-scroll.min.js"></script>

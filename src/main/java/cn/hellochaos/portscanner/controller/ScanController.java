@@ -16,43 +16,29 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/port-scanner/api/v1/scan")
 public class ScanController {
 
-    @Autowired
-    private PortScanService portScanService;
+  @Autowired private PortScanService portScanService;
 
+  /** 新增 */
+  @RequestMapping(method = RequestMethod.POST)
+  public ResultBean<?> insert(@RequestBody ScanTask scanTask) {
+    return new ResultBean<>(portScanService.submitScanTask(scanTask));
+  }
 
-    /**
-     * 新增
-     */
-    @RequestMapping(method = RequestMethod.POST)
-    public ResultBean<?> insert(@RequestBody ScanTask scanTask) {
-        return new ResultBean<>(portScanService.submitScanTask(scanTask));
-    }
+  /** 新增 */
+  @RequestMapping(method = RequestMethod.POST, value = "/simple")
+  public ResultBean<?> insertSimple(@RequestBody PortInfo portInfo) {
+    return new ResultBean<>(portScanService.submitSimpleScanTask(portInfo));
+  }
 
+  /** 根据id查询 */
+  @RequestMapping(method = RequestMethod.GET, value = "/task/{id}")
+  public ResultBean<?> getById(@PathVariable("id") String id) {
+    return new ResultBean<>(portScanService.getScanTask(id));
+  }
 
-    /**
-     * 新增
-     */
-    @RequestMapping(method = RequestMethod.POST, value = "/simple")
-    public ResultBean<?> insertSimple(@RequestBody PortInfo portInfo) {
-        return new ResultBean<>(portScanService.submitSimpleScanTask(portInfo));
-    }
-
-
-    /**
-     * 根据id查询
-     */
-    @RequestMapping(method = RequestMethod.GET, value = "/task/{id}")
-    public ResultBean<?> getById(@PathVariable("id") String id) {
-        return new ResultBean<>(portScanService.getScanTask(id));
-    }
-
-    /**
-     * 查询全部数据
-     */
-    @RequestMapping(method = RequestMethod.GET)
-    public ResultBean<?> list() {
-        return new ResultBean<>();
-    }
-
-
+  /** 查询全部数据 */
+  @RequestMapping(method = RequestMethod.GET)
+  public ResultBean<?> list() {
+    return new ResultBean<>(portScanService.listScanTask());
+  }
 }

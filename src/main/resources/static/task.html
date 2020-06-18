@@ -15,9 +15,15 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-88818678-1"></script>
     <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="./js/core.js"></script>
+    <link rel="stylesheet" href="./css/core.css">
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-88818678-1');
@@ -41,7 +47,6 @@
                 <a href="./index.html" class="mdui-list-item mdui-ripple ">快速扫描</a>
                 <a href="./full-scan.html" class="mdui-list-item mdui-ripple ">高级扫描</a>
                 <a href="./task.html" class="mdui-list-item mdui-ripple mdui-list-item-active">任务列表</a>
-                <a href="./result.html" class="mdui-list-item mdui-ripple ">扫描结果</a>
             </div>
         </div>
 
@@ -67,20 +72,25 @@
 <div class="mdui-container doc-container doc-no-cover">
     <h1 class="doc-title mdui-text-color-theme">任务列表</h1>
     <div class="doc-intro mdui-typo">
-        <p>我们提供了多种方式来获取 MDUI，且支持 CommonJS、AMD 模块规范。</p>
+        <p>查看[高级扫描]中添加的高级扫描任务列表，已结束的任务只保留三天时间。</p>
+    </div>
+
+    <div class="mdui-table-fluid">
+        <table id="taskTable" class="mdui-table mdui-table-hoverable">
+        </table>
     </div>
 </div>
 
 
-
-
 <div class="theme"></div>
 <script>
-    $(function(){
+    $(function () {
         $(".theme").load("theme.html");
         $(".header").load("header.html");
     });
+    var timer = window.setInterval(task, 3000)
 </script>
+
 
 <script src="//www.mdui.org/docs/assets/smooth-scroll-11.1.0/smooth-scroll.min.js"></script>
 <script src="//www.mdui.org/docs/assets/holder-2.9.4/holder.min.js"></script>

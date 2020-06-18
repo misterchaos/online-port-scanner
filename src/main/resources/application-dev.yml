@@ -4,6 +4,10 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:sqlite::resource:portscanner.db
 
 server:
   port: 8080

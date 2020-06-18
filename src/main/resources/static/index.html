@@ -43,7 +43,6 @@
                 <a href="./index.html" class="mdui-list-item mdui-ripple mdui-list-item-active">快速扫描</a>
                 <a href="./full-scan.html" class="mdui-list-item mdui-ripple ">高级扫描</a>
                 <a href="./task.html" class="mdui-list-item mdui-ripple ">任务列表</a>
-                <a href="./result.html" class="mdui-list-item mdui-ripple ">扫描结果</a>
             </div>
         </div>
 
@@ -72,6 +71,9 @@
         <p>使用端口扫描器对单个域名或IP地址的某个端口进行快速扫描</p>
     </div>
 
+    <div class="mdui-progress" id="progress" style="visibility:hidden">
+        <div class="mdui-progress-indeterminate"></div>
+    </div>
     <!-- 浮动标签、多行文本框 -->
     <div class="mdui-textfield mdui-textfield-floating-label">
         <i class="mdui-icon material-icons">desktop_mac</i>
@@ -96,6 +98,7 @@
                 <th>状态</th>
                 <th>协议</th>
                 <th>服务</th>
+                <th>描述</th>
             </tr>
             </thead>
             <tbody>
@@ -106,6 +109,7 @@
                 <td id="result_status"></td>
                 <td id="result_protocol"></td>
                 <td id="result_service"></td>
+                <td id="result_service_des"></td>
             </tr>
             </tbody>
         </table>

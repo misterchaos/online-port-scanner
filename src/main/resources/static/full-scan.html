@@ -15,6 +15,8 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-88818678-1"></script>
     <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="./js/core.js"></script>
+    <link rel="stylesheet" href="./css/core.css">
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -41,7 +43,6 @@
                 <a href="./index.html" class="mdui-list-item mdui-ripple ">快速扫描</a>
                 <a href="./full-scan.html" class="mdui-list-item mdui-ripple mdui-list-item-active">高级扫描</a>
                 <a href="./task.html" class="mdui-list-item mdui-ripple ">任务列表</a>
-                <a href="./result.html" class="mdui-list-item mdui-ripple ">扫描结果</a>
             </div>
         </div>
 
@@ -67,9 +68,41 @@
 <div class="mdui-container doc-container doc-no-cover">
     <h1 class="doc-title mdui-text-color-theme">高级扫描</h1>
     <div class="doc-intro mdui-typo">
-        <p>我们提供了多种方式来获取 MDUI，且支持 CommonJS、AMD 模块规范。</p>
+        <p>支持设置IP地址段，端口范围进行批量扫描</p>
     </div>
+
+    <!-- 浮动标签、多行文本框 -->
+    <div class="mdui-textfield mdui-textfield-floating-label">
+        <i class="mdui-icon material-icons">desktop_mac</i>
+        <label class="mdui-textfield-label">起始IP地址</label>
+        <textarea class="mdui-textfield-input" id="startIp"></textarea>
+    </div>
+
+    <!-- 浮动标签、多行文本框 -->
+    <div class="mdui-textfield mdui-textfield-floating-label">
+        <i class="mdui-icon material-icons">desktop_mac</i>
+        <label class="mdui-textfield-label">结束IP地址</label>
+        <textarea class="mdui-textfield-input" id="endIp"></textarea>
+    </div>
+    <!-- 浮动标签、多行文本框 -->
+    <div class="mdui-textfield mdui-textfield-floating-label">
+        <i class="mdui-icon material-icons">import_export</i>
+        <label class="mdui-textfield-label">起始端口</label>
+        <textarea class="mdui-textfield-input" id="startPort"></textarea>
+    </div>
+
+    <!-- 浮动标签、多行文本框 -->
+    <div class="mdui-textfield mdui-textfield-floating-label">
+        <i class="mdui-icon material-icons">import_export</i>
+        <label class="mdui-textfield-label">终止端口</label>
+        <textarea class="mdui-textfield-input" id="endPort"></textarea>
+    </div>
+    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent scan-button" onclick="full_scan()">开始扫描</button>
+
+
 </div>
+
+
 
 
 <div class="theme"></div>
