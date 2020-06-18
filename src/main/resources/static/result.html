@@ -70,7 +70,7 @@
 <a id="anchor-top"></a>
 
 <div class="mdui-container doc-container doc-no-cover">
-    <h1 class="doc-title mdui-text-color-theme">扫描结果</h1>
+    <h1 class="doc-title mdui-text-color-theme">扫描报告</h1>
     <div class="doc-intro mdui-typo">
         <p>在[高级扫描]中使用端口扫描器对IP地址段和端口段进行扫描的结果</p>
     </div>
@@ -113,7 +113,7 @@
     }
 
     var id = getUrlParam('id');
-
+    result(id);
     var timer = window.setInterval(function () {
         result(id)
     }, 3000)

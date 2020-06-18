@@ -153,7 +153,7 @@ function task() {
                         '                <td>' + task.endTime + '</td>\n' +
                         '                <td>' + task.runTime + '</td>\n' +
                         '                <td>' + task.status + '</td>\n' +
-                        '                <td><a href="result.html?id=' + task.taskId + '">result</a></td>\n' +
+                        '                <td><a href="result.html?id=' + task.taskId + '">report</a></td>\n' +
                         '            </tr>\n' +
                         '            </tbody>  '
                     table += tbody;
