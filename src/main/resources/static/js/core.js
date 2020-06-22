@@ -46,13 +46,20 @@ function simple_scan() {
             $("#progress").attr("style", "visibility:hidden")
             return;
         }
+
         var data = response.data;
         $("#result_ip").text(data.ip);
         $("#result_port").text(data.port);
         $("#result_status").text(data.status);
         $("#result_protocol").text(data.protocol);
-        $("#result_service").text(data.service);
-        $("#result_service_des").text(data.serviceDescription);
+        if (data.status === '开启') {
+            $("#result_service").text(data.service);
+            $("#result_service_des").text(data.serviceDescription);
+        }else {
+            $("#result_service").text("未知");
+            $("#result_service_des").text("未知");
+        }
+
         $("#progress").attr("style", "visibility:hidden")
 
     });

@@ -62,7 +62,8 @@ public class PortScanWorker implements Runnable {
 
     // 扫描TCP端口
     try {
-      Socket socket = new Socket(inetSocketAddress.getAddress(), inetSocketAddress.getPort());
+      Socket socket = new Socket();
+      socket.connect(inetSocketAddress,10000);
       portInfo.setProtocol(PortInfo.TCP);
       portInfo.setStatus(PortInfo.OPEN);
     } catch (IOException e) {
