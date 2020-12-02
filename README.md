@@ -14,7 +14,7 @@
 
 在输入域名/IP地址和端口，点击右下角开始扫描按钮即可获得扫描结果
 
-![image-20200621232844125](http://img.hellochaos.cn/img/20201202095605)
+![image-20200621232844125](https://github.com/misterchaos/online-port-scanner/blob/master/imgs/20201202095605)
 
 ##### 高级扫描：
 
